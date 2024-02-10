@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.51">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>821</IntrospectionStateNumber>
+      <IntrospectionStateNumber>899</IntrospectionStateNumber>
       <ServerVersion>16.1</ServerVersion>
-      <StartupTime>1707516543</StartupTime>
+      <StartupTime>1707550775</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1400,7 +1400,7 @@ false posixrules
 13212||10|C|G
 13212||-9223372036854775808|U|G
 13212||10|U|G</Grants>
-      <IntrospectionStateNumber>821</IntrospectionStateNumber>
+      <IntrospectionStateNumber>899</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -6499,70 +6499,11 @@ false posixrules
     <schema id="263" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>821</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-02-09.22:26:59</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>899</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-02-10.08:07:49</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
-    <sequence id="264" parent="263" name="usertable_id_seq">
-      <DasType>integer|0s</DasType>
-      <ObjectId>16482</ObjectId>
-      <SequenceIdentity>1</SequenceIdentity>
-      <StartValue>1</StartValue>
-      <StateNumber>820</StateNumber>
-      <OwnerName>postgres</OwnerName>
-    </sequence>
-    <table id="265" parent="263" name="usertable">
-      <ObjectId>16483</ObjectId>
-      <StateNumber>820</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
-    </table>
-    <column id="266" parent="265" name="id">
-      <DasType>integer|0s</DasType>
-      <DefaultExpression>nextval(&apos;usertable_id_seq&apos;::regclass)</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>820</StateNumber>
-      <SequenceId>16482</SequenceId>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="267" parent="265" name="first_name">
-      <DasType>varchar(128)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StateNumber>820</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="268" parent="265" name="last_name">
-      <DasType>varchar(128)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>820</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="269" parent="265" name="age">
-      <DasType>integer|0s</DasType>
-      <Position>4</Position>
-      <StateNumber>820</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <index id="270" parent="265" name="usertable_pkey">
-      <ColNames>id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16487</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>820</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="271" parent="265" name="usertable_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16488</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>820</StateNumber>
-      <UnderlyingIndexId>16487</UnderlyingIndexId>
-    </key>
   </database-model>
 </dataSource>

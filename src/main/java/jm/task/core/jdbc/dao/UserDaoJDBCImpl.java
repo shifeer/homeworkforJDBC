@@ -25,7 +25,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 """;
         try (Connection connection = Util.get();
              var statement = connection.createStatement()) {
-            System.out.println(connection.getTransactionIsolation());
             statement.execute(sql);
 
         } catch (SQLException e) {
@@ -39,7 +38,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 """;
         try (Connection connection = Util.get();
              var statement = connection.createStatement()) {
-            System.out.println(connection.getTransactionIsolation());
             statement.execute(sql);
 
         } catch (SQLException e) {
@@ -48,11 +46,13 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        String sql = "insert into UserTable(first_name, last_name, age) values ('" + name + "', '" + lastName + "','"  + age +"')";
+        String sql = "insert into UserTable(first_name, last_name, age) values (?, ?, ?)";
         try (Connection connection = Util.get();
-             var statement = connection.createStatement()) {
-            System.out.println(connection.getTransactionIsolation());
-            statement.executeUpdate(sql);
+             var preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setByte(3, age);
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -60,11 +60,11 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void removeUserById(long id) {
-        String sql = "delete from UserTable where id = " + id;
+        String sql = "delete from UserTable where id = ?";
         try (Connection connection = Util.get();
-             var statement = connection.createStatement()) {
-            System.out.println(connection.getTransactionIsolation());
-            statement.executeUpdate(sql);
+             var preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -77,7 +77,6 @@ public class UserDaoJDBCImpl implements UserDao {
         """;
         try (Connection connection = Util.get();
              var statement = connection.createStatement()) {
-            System.out.println(connection.getTransactionIsolation());
             ResultSet resultSet = statement.executeQuery(sql);
             List<User> users = new ArrayList<>();
             while (resultSet.next()) {
@@ -101,7 +100,6 @@ public class UserDaoJDBCImpl implements UserDao {
         String sql = "delete from UserTable";
         try (Connection connection = Util.get();
              var statement = connection.createStatement()) {
-            System.out.println(connection.getTransactionIsolation());
             statement.executeUpdate(sql);
 
         } catch (SQLException e) {
