@@ -1,6 +1,7 @@
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,6 +22,8 @@ public class UserServiceTest {
             userService.dropUsersTable();
         } catch (Exception e) {
             Assert.fail("При тестировании удаления таблицы произошло исключение\n" + e);
+        } finally {
+            Util.closePoolConnection();
         }
     }
 
@@ -31,6 +34,8 @@ public class UserServiceTest {
             userService.createUsersTable();
         } catch (Exception e) {
             Assert.fail("При тестировании создания таблицы пользователей произошло исключение\n" + e.getMessage());
+        } finally {
+            Util.closePoolConnection();
         }
     }
 
@@ -52,6 +57,8 @@ public class UserServiceTest {
 
         } catch (Exception e) {
             Assert.fail("Во время тестирования сохранения пользователя произошло исключение\n" + e);
+        } finally {
+            Util.closePoolConnection();
         }
     }
 
@@ -64,6 +71,8 @@ public class UserServiceTest {
             userService.removeUserById(1L);
         } catch (Exception e) {
             Assert.fail("При тестировании удаления пользователя по id произошло исключение\n" + e);
+        } finally {
+            Util.closePoolConnection();
         }
     }
 
@@ -80,6 +89,8 @@ public class UserServiceTest {
             }
         } catch (Exception e) {
             Assert.fail("При попытке достать всех пользователей из базы данных произошло исключение\n" + e);
+        } finally {
+            Util.closePoolConnection();
         }
     }
 
@@ -96,6 +107,8 @@ public class UserServiceTest {
             }
         } catch (Exception e) {
             Assert.fail("При тестировании очистки таблицы пользователей произошло исключение\n" + e);
+        } finally {
+            Util.closePoolConnection();
         }
     }
 
